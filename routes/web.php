@@ -19,6 +19,11 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/user', 'index')->name('dashboard.user.index');
+        Route::get('/user/create', 'create')->name('dashboard.user.create');
+        Route::post('/user/create', 'store')->name('dashboard.user.store');
+        Route::get('/user/{id}/edit', 'edit')->name('dashboard.user.edit');
+        Route::put('/user/{id}', 'update')->name('dashboard.user.update');
+        Route::delete('/user/{id}/destroy', 'destroy')->name('dashboard.user.destroy');
     }); // end route
 
     Route::controller(ConsentController::class)->group(function () {

@@ -11,9 +11,15 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    User Data
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-table me-1"></i>
+                        User Data
+                    </div>
+                    <a href="{{ route('dashboard.user.create') }}" class="btn btn-sm btn-secondary">
+                        <i class="fa fa-plus-circle"></i>
+                        Create
+                    </a>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -36,10 +42,10 @@
                                 <td>{{ ucfirst($user->role) }}</td>
                                 <td>{{ $user->created_at }}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-success">
+                                    <a href="{{ route('dashboard.user.edit', $user->id) }}" class="btn btn-sm btn-success">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="" class="btn btn-sm btn-danger btn-delete">
+                                    <a href="{{ route('dashboard.user.destroy', $user->id) }}" class="btn btn-sm btn-danger btn-delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
