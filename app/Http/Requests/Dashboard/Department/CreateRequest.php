@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Consent;
+namespace App\Http\Requests\Dashboard\Department;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:60', 'unique:consents,name']
+            'name' => ['required', 'max:60', 'unique:departments,name']
         ];
     }
 }

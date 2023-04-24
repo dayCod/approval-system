@@ -37,6 +37,11 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
 
     Route::controller(DepartmentController::class)->group(function () {
         Route::get('/department', 'index')->name('dashboard.department.index');
+        Route::get('/department/create', 'create')->name('dashboard.department.create');
+        Route::post('/department/create', 'store')->name('dashboard.department.store');
+        Route::get('/department/{id}/edit', 'edit')->name('dashboard.department.edit');
+        Route::put('/department/{id}', 'update')->name('dashboard.department.update');
+        Route::delete('/department/{id}/destroy', 'destroy')->name('dashboard.department.destroy');
     }); // end route
 
 });

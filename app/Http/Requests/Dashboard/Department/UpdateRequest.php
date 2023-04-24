@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Dashboard\Consent;
+namespace App\Http\Requests\Dashboard\Department;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class CreateRequest extends FormRequest
+class UpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +25,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'max:60', 'unique:consents,name']
+            'name' => ['required', 'max:60', Rule::unique('departments')->ignore(request()->route()->parameters('department')['id'])]
         ];
     }
 }

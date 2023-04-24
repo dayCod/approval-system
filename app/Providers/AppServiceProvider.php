@@ -9,6 +9,10 @@ use App\Services\Dashboard\Consent\CreateConsent;
 use App\Services\Dashboard\Consent\DeleteConsent;
 use App\Services\Dashboard\Consent\GetConsent;
 use App\Services\Dashboard\Consent\UpdateConsent;
+use App\Services\Dashboard\Department\CreateDepartment;
+use App\Services\Dashboard\Department\DeleteDepartment;
+use App\Services\Dashboard\Department\GetDepartment;
+use App\Services\Dashboard\Department\UpdateDepartment;
 use App\Services\Dashboard\User\CreateUser;
 use App\Services\Dashboard\User\DeleteUser;
 use App\Services\Dashboard\User\GetUser;
@@ -44,6 +48,13 @@ class AppServiceProvider extends ServiceProvider
         $this->registerService('createConsent', CreateConsent::class);
         $this->registerService('updateConsent', UpdateConsent::class);
         $this->registerService('deleteConsent', DeleteConsent::class);
+
+        // Department
+        $this->registerService('getDepartment', GetDepartment::class);
+        $this->registerService('createDepartment', CreateDepartment::class);
+        $this->registerService('updateDepartment', UpdateDepartment::class);
+        $this->registerService('deleteDepartment', DeleteDepartment::class);
+
     }
 
     /**

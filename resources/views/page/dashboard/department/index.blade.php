@@ -11,9 +11,15 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    Department Data
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-table me-1"></i>
+                        Department Data
+                    </div>
+                    <a href="{{ route('dashboard.department.create') }}" class="btn btn-sm btn-secondary">
+                        <i class="fa fa-plus-circle"></i>
+                        Create
+                    </a>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -21,24 +27,28 @@
                             <tr>
                                 <th>#</th>
                                 <th>Name</th>
+                                <th>Code</th>
                                 <th>Created at</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>
-                                    <a href="" class="btn btn-sm btn-success">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <a href="" class="btn btn-sm btn-danger">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach($departments as $department)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $department->name }}</td>
+                                    <td>{{ $department->code }}</td>
+                                    <td>{{ $department->created_at }}</td>
+                                    <td>
+                                        <a href="{{ route('dashboard.department.edit', $department->id) }}" class="btn btn-sm btn-success">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <a href="{{ route('dashboard.department.destroy', $department->id) }}" class="btn btn-sm btn-danger btn-delete">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
