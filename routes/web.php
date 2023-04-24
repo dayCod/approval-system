@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ConsentController;
 use App\Http\Controllers\Dashboard\HomeController;
 use App\Http\Controllers\Dashboard\UserController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,10 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/user', 'index')->name('dashboard.user.index');
+    }); // end route
+
+    Route::controller(ConsentController::class)->group(function () {
+        Route::get('/consent', 'index')->name('dashboard.user.consent');
     }); // end route
 
 });
