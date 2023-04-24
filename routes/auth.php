@@ -15,6 +15,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['guest']], function () {
 
     Route::controller(RegisterController::class)->group(function () {
         Route::get('register', 'page')->name('auth.register-page');
+        Route::post('register', 'handleRegister')->name('auth.register');
     }); // end route
 
     Route::controller(LogoutController::class)->group(function () {

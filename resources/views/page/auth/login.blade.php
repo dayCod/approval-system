@@ -7,6 +7,13 @@
                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                     <div class="card-body">
+                        @if(Session::has('errors'))
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </div>
+                        @endif
                         <form action="{{ route('auth.login') }}" method="POST">
                             @csrf
                             <div class="form-floating mb-3">

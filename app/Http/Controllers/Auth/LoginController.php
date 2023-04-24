@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -12,9 +13,9 @@ class LoginController extends Controller
         return view('page.auth.login');
     }
 
-    public function handleAuthenticate(Request $request)
+    public function handleAuthenticate(LoginRequest $request)
     {
-        $result = app('authenticate')->execute($request->except('_token'));
+        $result = app('authenticate')->execute($request->validated());
 
         if (!$result['success']) return back()->with('fail', $result['message'])->onlyInput('email');
 

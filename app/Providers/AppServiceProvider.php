@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\Auth\Login;
 use App\Services\Auth\Logout;
+use App\Services\Auth\Register;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -20,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
 
         // Logout
         $this->registerService('logout', Logout::class);
+
+        // Register
+        $this->registerService('register', Register::class);
     }
 
     /**
