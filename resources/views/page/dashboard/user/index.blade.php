@@ -39,7 +39,7 @@
                                     <a href="" class="btn btn-sm btn-success">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="" class="btn btn-sm btn-danger">
+                                    <a href="" class="btn btn-sm btn-danger btn-delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
