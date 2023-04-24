@@ -73,6 +73,8 @@ class UserController extends Controller
 
         if (!$result['success']) return back()->with('fail', $result['message']);
 
+        session()->flash('success', $result['message']);
+
         return response()->json(['success' => $result['message']], 200);
     }
 }
