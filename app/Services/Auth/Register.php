@@ -23,6 +23,8 @@ class Register extends BaseService implements BaseServiceInterface
 
         $registered_user = User::create($input_user);
 
+        $registered_user->assignRole('user');
+
         $this->result['success'] = true;
         $this->result['message'] = 'User Berhasil Dibuat';
         $this->result['data'] = $registered_user;
