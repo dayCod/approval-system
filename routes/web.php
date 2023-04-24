@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => '/'], function () {
+Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
 
     Route::controller(HomeController::class)->group(function () {
         Route::get('/', 'page')->name('dashboard.home');
