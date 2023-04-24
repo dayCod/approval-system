@@ -11,9 +11,15 @@
     <div class="row">
         <div class="col-12">
             <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-table me-1"></i>
-                    Consent Data
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-table me-1"></i>
+                        Consent Data
+                    </div>
+                    <a href="{{ route('dashboard.consent.create') }}" class="btn btn-sm btn-secondary">
+                        <i class="fa fa-plus-circle"></i>
+                        Create
+                    </a>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">
@@ -26,19 +32,21 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($consents as $consent)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $consent->name }}</td>
+                                <td>{{ $consent->created_at }}</td>
                                 <td>
-                                    <a href="" class="btn btn-sm btn-success">
+                                    <a href="{{ route('dashboard.consent.edit', $consent->id) }}" class="btn btn-sm btn-success">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="" class="btn btn-sm btn-danger">
+                                    <a href="{{ route('dashboard.consent.destroy', $consent->id) }}" class="btn btn-sm btn-danger btn-delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

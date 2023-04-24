@@ -5,6 +5,10 @@ namespace App\Providers;
 use App\Services\Auth\Login;
 use App\Services\Auth\Logout;
 use App\Services\Auth\Register;
+use App\Services\Dashboard\Consent\CreateConsent;
+use App\Services\Dashboard\Consent\DeleteConsent;
+use App\Services\Dashboard\Consent\GetConsent;
+use App\Services\Dashboard\Consent\UpdateConsent;
 use App\Services\Dashboard\User\CreateUser;
 use App\Services\Dashboard\User\DeleteUser;
 use App\Services\Dashboard\User\GetUser;
@@ -34,6 +38,12 @@ class AppServiceProvider extends ServiceProvider
         $this->registerService('createUser', CreateUser::class);
         $this->registerService('updateUser', UpdateUser::class);
         $this->registerService('deleteUser', DeleteUser::class);
+
+        // Consent
+        $this->registerService('getConsent', GetConsent::class);
+        $this->registerService('createConsent', CreateConsent::class);
+        $this->registerService('updateConsent', UpdateConsent::class);
+        $this->registerService('deleteConsent', DeleteConsent::class);
     }
 
     /**

@@ -28,6 +28,11 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
 
     Route::controller(ConsentController::class)->group(function () {
         Route::get('/consent', 'index')->name('dashboard.consent.index');
+        Route::get('/consent/create', 'create')->name('dashboard.consent.create');
+        Route::post('/consent/create', 'store')->name('dashboard.consent.store');
+        Route::get('/consent/{id}/edit', 'edit')->name('dashboard.consent.edit');
+        Route::put('/consent/{id}', 'update')->name('dashboard.consent.update');
+        Route::delete('/consent/{id}/destroy', 'destroy')->name('dashboard.consent.destroy');
     }); // end route
 
     Route::controller(DepartmentController::class)->group(function () {
