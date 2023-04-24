@@ -10,11 +10,11 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 User
             </a>
-            <a class="nav-link" href="{{ route('dashboard.user.consent') }}">
+            <a class="nav-link" href="{{ route('dashboard.consent.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Consent
             </a>
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="{{ route('dashboard.department.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Department
             </a>
