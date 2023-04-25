@@ -18,6 +18,10 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Department
             </a>
+            <a class="nav-link" href="{{ route('dashboard.approval_application.index') }}">
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                Approval Application
+            </a>
             <a class="nav-link" href="index.html">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Approval

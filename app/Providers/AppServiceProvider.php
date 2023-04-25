@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Services\Auth\Login;
 use App\Services\Auth\Logout;
 use App\Services\Auth\Register;
+use App\Services\Dashboard\ApplicationApproval\CreateApplication;
+use App\Services\Dashboard\ApplicationApproval\GetApplication;
 use App\Services\Dashboard\Consent\CreateConsent;
 use App\Services\Dashboard\Consent\DeleteConsent;
 use App\Services\Dashboard\Consent\GetConsent;
@@ -54,6 +56,10 @@ class AppServiceProvider extends ServiceProvider
         $this->registerService('createDepartment', CreateDepartment::class);
         $this->registerService('updateDepartment', UpdateDepartment::class);
         $this->registerService('deleteDepartment', DeleteDepartment::class);
+
+        // Approval Application
+        $this->registerService('getApplication', GetApplication::class);
+        $this->registerService('createApplication', CreateApplication::class);
 
     }
 

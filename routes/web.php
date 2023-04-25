@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\ApprovalApplicationController;
 use App\Http\Controllers\Dashboard\ConsentController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\HomeController;
@@ -42,6 +43,15 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
         Route::get('/department/{id}/edit', 'edit')->name('dashboard.department.edit');
         Route::put('/department/{id}', 'update')->name('dashboard.department.update');
         Route::delete('/department/{id}/destroy', 'destroy')->name('dashboard.department.destroy');
+    }); // end route
+
+    Route::controller(ApprovalApplicationController::class)->group(function () {
+        Route::get('/approval_application', 'index')->name('dashboard.approval_application.index');
+        Route::get('/approval_application/create', 'create')->name('dashboard.approval_application.create');
+        Route::post('/approval_application/create', 'store')->name('dashboard.approval_application.store');
+        Route::get('/approval_application/{id}/edit', 'edit')->name('dashboard.approval_application.edit');
+        Route::put('/approval_application/{id}', 'update')->name('dashboard.approval_application.update');
+        Route::delete('/approval_application/{id}/destroy', 'destroy')->name('dashboard.approval_application.destroy');
     }); // end route
 
 });

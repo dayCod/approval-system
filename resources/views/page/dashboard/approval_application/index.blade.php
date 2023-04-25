@@ -1,0 +1,74 @@
+@extends('layout.dashboard.master')
+
+@section('content')
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Approval Application</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Dashboard</li>
+        <li class="breadcrumb-item active">Approval Application</li>
+    </ol>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header d-flex align-items-center justify-content-between">
+                    <div>
+                        <i class="fas fa-table me-1"></i>
+                        Approval Application Data
+                    </div>
+                    <a href="{{ route('dashboard.approval_application.create') }}" class="btn btn-sm btn-secondary">
+                        <i class="fa fa-plus-circle"></i>
+                        Create
+                    </a>
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Consent</th>
+                                <th>Departement</th>
+                                <th>Image</th>
+                                <th>Remark</th>
+                                <th>Created at</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($approval_applications as $approval_application)
+                                <td>
+                                    {{ $loop->iteration }}
+                                </td>
+                                <td>
+                                    {{ $approval_application->consent->name }}
+                                </td>
+                                <td>
+                                    {{ $approval_application->department->name }}
+                                </td>
+                                <td>
+                                    //
+                                </td>
+                                <td>
+                                    {{ ($approval_application->need_remark) ? $approval_application->remark : 'Without Remark' }}
+                                </td>
+                                <td>
+                                    {{ $approval_application->created_at }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('dashboard.consent.edit', $consent->id) }}" class="btn btn-sm btn-success">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a href="{{ route('dashboard.consent.destroy', $consent->id) }}" class="btn btn-sm btn-danger btn-delete">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
