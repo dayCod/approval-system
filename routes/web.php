@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Dashboard\ApprovalApplicationController;
+use App\Http\Controllers\Dashboard\ApprovalController;
 use App\Http\Controllers\Dashboard\ConsentController;
 use App\Http\Controllers\Dashboard\DepartmentController;
 use App\Http\Controllers\Dashboard\HomeController;
@@ -53,6 +54,12 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
         Route::put('/approval_application/{id}', 'update')->name('dashboard.approval_application.update');
         Route::delete('/approval_application/{id}/destroy', 'destroy')->name('dashboard.approval_application.destroy');
     }); // end route
+
+    Route::controller(ApprovalController::class)->group(function () {
+        Route::get('/approval', 'index')->name('dashboard.approval.index');
+        Route::get('/approval/{id}/approve', 'approveApplication')->name('dashboard.approval.approve');
+        Route::get('/approval/{id}/reject', 'rejectApplication')->name('dashboard.approval.reject');
+    });
 
 });
 
