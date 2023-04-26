@@ -6,7 +6,9 @@ use App\Services\Auth\Login;
 use App\Services\Auth\Logout;
 use App\Services\Auth\Register;
 use App\Services\Dashboard\ApplicationApproval\CreateApplication;
+use App\Services\Dashboard\ApplicationApproval\DeleteApplication;
 use App\Services\Dashboard\ApplicationApproval\GetApplication;
+use App\Services\Dashboard\ApplicationApproval\UpdateApplication;
 use App\Services\Dashboard\Consent\CreateConsent;
 use App\Services\Dashboard\Consent\DeleteConsent;
 use App\Services\Dashboard\Consent\GetConsent;
@@ -60,6 +62,8 @@ class AppServiceProvider extends ServiceProvider
         // Approval Application
         $this->registerService('getApplication', GetApplication::class);
         $this->registerService('createApplication', CreateApplication::class);
+        $this->registerService('updateApplication', UpdateApplication::class);
+        $this->registerService('deleteApplication', DeleteApplication::class);
 
     }
 

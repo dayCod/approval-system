@@ -34,7 +34,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($approval_applications as $approval_application)
+                                @foreach ($approval_applications as $index => $approval_application)
+                                <tr>
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
@@ -47,12 +48,12 @@
                                     <td>
                                         <!-- Button trigger modal -->
                                         <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal">
+                                            data-bs-target="#exampleModal{{ $index + 1 }}">
                                             Show Image
                                         </button>
 
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        <div class="modal fade" id="exampleModal{{ $index + 1 }}" tabindex="-1"
                                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -62,14 +63,15 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body text-center">
-                                                        <img src="{{ asset($approval_application->evidence_img) }}" class="img-thumbnail w-50" alt="">
+                                                        <img src="{{ url($approval_application->evidence_img) }}" class="img-thumbnail w-50" alt="">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </td>
                                     <td>
-                                        {{ $approval_application->need_remark ? $approval_application->remark : 'Without Remark' }}
+                                        {{ $approval_application->need_remark ? $approval_application->remark : '-' }}
                                     </td>
                                     <td>
                                         {{ $approval_application->created_at }}
@@ -84,6 +86,7 @@
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>

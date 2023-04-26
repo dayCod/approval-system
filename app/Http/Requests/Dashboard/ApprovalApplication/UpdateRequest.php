@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'consent_id' => ['required'],
             'department_id' => ['required'],
-            'evidence_img' => ['required', 'image', 'mimes:png,jpg,jpeg'],
+            'evidence_img' => ['image', 'mimes:png,jpg,jpeg'],
         ];
     }
 }
