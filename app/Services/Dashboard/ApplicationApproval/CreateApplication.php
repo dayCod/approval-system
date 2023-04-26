@@ -23,7 +23,7 @@ class CreateApplication extends BaseService implements BaseServiceInterface
             'remark' => $dto['remark'] ?? null,
         ];
 
-        $upload_image = $this->uploadImage($dto['evidence_img'], 'upload/evidence_img');
+        $upload_image = $this->uploadImage($dto['evidence_img'], 'upload/evidence_img/');
 
         $input_data['evidence_img'] = $upload_image['path'];
 
