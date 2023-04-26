@@ -24,6 +24,8 @@ trait Image
                 File::delete(public_path($currentImage));
             }
 
+            $image->move(public_path($dir), $imageName);
+
             $result['upload_image'] = true;
             $result['path'] = $save_path;
 

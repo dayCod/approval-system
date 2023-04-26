@@ -55,10 +55,10 @@
                                     {{ $approval_application->created_at }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('dashboard.consent.edit', $consent->id) }}" class="btn btn-sm btn-success">
+                                    <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}" class="btn btn-sm btn-success">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <a href="{{ route('dashboard.consent.destroy', $consent->id) }}" class="btn btn-sm btn-danger btn-delete">
+                                    <a href="{{ route('dashboard.approval_application.destroy', $approval_application->id) }}" class="btn btn-sm btn-danger btn-delete">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -72,3 +72,4 @@
 </div>
 
 @endsection
+

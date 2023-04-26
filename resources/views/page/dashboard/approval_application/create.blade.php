@@ -62,7 +62,7 @@
                                 </div>
                             </div>
 
-                            <div class="mb-3">
+                            <div class="mb-3 d-none" id="remark">
                                 <label for="exampleFormControlTextarea1" class="form-label">Remark</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="remark"></textarea>
                             </div>
@@ -77,3 +77,20 @@
         </div>
     </div>
 @endsection
+
+
+@push('script')
+
+<script>
+    $(document).ready(function () {
+        $('input[name="need_remark"]').change(function() {
+            if ($(this).is(':checked')) {
+                $('#remark').removeClass('d-none')
+            } else {
+                $('#remark').addClass('d-none')
+            }
+        })
+    })
+</script>
+
+@endpush

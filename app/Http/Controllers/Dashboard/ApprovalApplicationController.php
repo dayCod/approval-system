@@ -35,6 +35,7 @@ class ApprovalApplicationController extends Controller
     {
         try {
             $result = app('createApplication')->execute([
+                'user_id' => auth()->id(),
                 'consent_id' => $request['consent_id'],
                 'department_id' => $request['department_id'],
                 'evidence_img' => $request->file('evidence_img'),

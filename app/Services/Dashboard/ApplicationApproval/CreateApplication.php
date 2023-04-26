@@ -14,13 +14,13 @@ class CreateApplication extends BaseService implements BaseServiceInterface
     public function process($dto)
     {
         $this->result['success'] = false;
-        dd($dto);
 
         $input_data = [
+            'user_id' => $dto['user_id'],
             'consent_id' => $dto['consent_id'],
             'department_id' => $dto['department_id'],
             'need_remark' => $dto['need_remark'],
-            'remark' => $dto['remark'],
+            'remark' => $dto['remark'] ?? null,
         ];
 
         $upload_image = $this->uploadImage($dto['evidence_img'], 'upload/evidence_img');
