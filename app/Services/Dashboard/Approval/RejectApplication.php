@@ -2,8 +2,10 @@
 
 namespace App\Services\Dashboard\Approval;
 
+use App\Jobs\SendMail;
 use App\Services\BaseService;
 use App\Services\BaseServiceInterface;
+use Illuminate\Support\Facades\DB;
 
 class RejectApplication extends BaseService implements BaseServiceInterface
 {
@@ -11,25 +13,35 @@ class RejectApplication extends BaseService implements BaseServiceInterface
     {
         $this->result['success'] = false;
 
-        $find_application = app('getApplication')->execute([
-            'application_id' => $dto['application_id'],
-        ]);
+        DB::beginTransaction();
 
-        if (!$find_application['success']) {
-
-            $this->result['message'] = $find_application['message'];
-            $this->result['data'] = [];
-
-        } else {
-
-            $find_application['data']->update([
-                'status' => 2, // rejected
+        try {
+            $find_application = app('getApplication')->execute([
+                'application_id' => $dto['application_id'],
             ]);
 
-            $this->result['success'] = true;
-            $this->result['message'] = 'Application Rejected!';
-            $this->result['data'] = $find_application['data'];
+            if (!$find_application['success']) {
 
+                $this->result['message'] = $find_application['message'];
+                $this->result['data'] = [];
+
+            } else {
+
+                $find_application['data']->update([
+                    'status' => 2, // rejected
+                ]);
+
+                SendMail::dispatch($find_application['data']->user->email, 'Application Notification', 'template.mail.application');
+
+                DB::commit();
+
+                $this->result['success'] = true;
+                $this->result['message'] = 'Application Rejected!';
+                $this->result['data'] = $find_application['data'];
+
+            }
+        } catch (\Exception) {
+            DB::rollBack();
         }
 
     }

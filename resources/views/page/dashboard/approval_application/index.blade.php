@@ -29,64 +29,86 @@
                                     <th>Departement</th>
                                     <th>Image</th>
                                     <th>Remark</th>
+                                    <th>Status</th>
                                     <th>Created at</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($approval_applications as $index => $approval_application)
-                                <tr>
-                                    <td>
-                                        {{ $loop->iteration }}
-                                    </td>
-                                    <td>
-                                        {{ $approval_application->consent->name }}
-                                    </td>
-                                    <td>
-                                        {{ $approval_application->department->name }}
-                                    </td>
-                                    <td>
-                                        <!-- Button trigger modal -->
-                                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal{{ $index + 1 }}">
-                                            Show Image
-                                        </button>
+                                    <tr>
+                                        <td>
+                                            {{ $loop->iteration }}
+                                        </td>
+                                        <td>
+                                            {{ $approval_application->consent->name }}
+                                        </td>
+                                        <td>
+                                            {{ $approval_application->department->name }}
+                                        </td>
+                                        <td>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal{{ $index + 1 }}">
+                                                Show Image
+                                            </button>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal{{ $index + 1 }}" tabindex="-1"
-                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Evidence Image</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body text-center">
-                                                        <img src="{{ url($approval_application->evidence_img) }}" class="img-thumbnail w-50" alt="">
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal{{ $index + 1 }}" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Evidence Image
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <img src="{{ url($approval_application->evidence_img) }}"
+                                                                class="img-thumbnail w-50" alt="">
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    </td>
-                                    <td>
-                                        {{ $approval_application->need_remark ? $approval_application->remark : '-' }}
-                                    </td>
-                                    <td>
-                                        {{ $approval_application->created_at }}
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}"
-                                            class="btn btn-sm btn-success">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                        <a href="{{ route('dashboard.approval_application.destroy', $approval_application->id) }}"
-                                            class="btn btn-sm btn-danger btn-delete">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>
+                                            {{ $approval_application->need_remark ? $approval_application->remark : '-' }}
+                                        </td>
+                                        <td>
+                                            <span
+                                                class="badge
+                                            @if ($approval_application->status == 0)
+                                                bg-warning
+                                            @elseif($approval_application->status == 1)
+                                                bg-success
+                                            @else
+                                                bg-danger @endif
+                                        ">
+                                                @if ($approval_application->status == 0)
+                                                    Process
+                                                @elseif($approval_application->status == 1)
+                                                    Approve
+                                                @else
+                                                    Reject
+                                                @endif
+                                            </span>
+                                        </td>
+                                        <td>
+                                            {{ $approval_application->created_at }}
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}"
+                                                class="btn btn-sm btn-success">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+                                            <a href="{{ route('dashboard.approval_application.destroy', $approval_application->id) }}"
+                                                class="btn btn-sm btn-danger btn-delete">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
