@@ -9,19 +9,19 @@
             @role('admin')
             <a class="nav-link" href="{{ route('dashboard.user.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                User
+                Master User
             </a>
             <a class="nav-link" href="{{ route('dashboard.consent.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                Consent
+                Master Leave Type
             </a>
             <a class="nav-link" href="{{ route('dashboard.department.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                Department
+                Master Department
             </a>
             <a class="nav-link" href="{{ route('dashboard.approval.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                Approval
+                Leave Request
             </a>
             <a class="nav-link" href="index.html">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
@@ -31,7 +31,7 @@
             @role('user')
             <a class="nav-link" href="{{ route('dashboard.approval_application.index') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                Approval Application
+                Leave Request
             </a>
             @endrole
         </div>

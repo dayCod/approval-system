@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Approval Application</h1>
+        <h1 class="mt-4">Leave Request</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">Dashboard</li>
-            <li class="breadcrumb-item active">Approval Application</li>
+            <li class="breadcrumb-item active">Leave Request</li>
         </ol>
         <div class="row">
             <div class="col-12">
@@ -13,7 +13,7 @@
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div>
                             <i class="fas fa-table me-1"></i>
-                            Approval Application Data
+                            Leave Request Data
                         </div>
                         <a href="{{ route('dashboard.approval_application.create') }}" class="btn btn-sm btn-secondary">
                             <i class="fa fa-plus-circle"></i>
@@ -96,7 +96,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            {{ $approval_application->created_at }}
+                                            {{ Carbon\Carbon::parse($approval_application->created_at)->format('d M Y') }}
                                         </td>
                                         <td>
                                             <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}"

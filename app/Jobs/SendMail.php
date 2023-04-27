@@ -4,6 +4,7 @@ namespace App\Jobs;
 
 use App\Helpers\Email;
 use App\Models\ApprovalApplication;
+use App\Models\Mail;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -38,6 +39,7 @@ class SendMail implements ShouldQueue
     public function handle()
     {
         $user = User::where('email', $this->to)->first();
+
         $application = ApprovalApplication::where('user_id', $user['id'])->first();
 
         $data['name'] = $user['name'];

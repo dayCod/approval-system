@@ -2,10 +2,11 @@
 
 namespace App\Services\Dashboard\Approval;
 
+use App\Models\Mail;
 use App\Jobs\SendMail;
 use App\Services\BaseService;
-use App\Services\BaseServiceInterface;
 use Illuminate\Support\Facades\DB;
+use App\Services\BaseServiceInterface;
 
 class ApproveApplication extends BaseService implements BaseServiceInterface
 {
@@ -22,6 +23,16 @@ class ApproveApplication extends BaseService implements BaseServiceInterface
 
             if (!$find_application['success']) {
 
+                $mail_input = [
+                    'to_email' => $find_application['data']->user->email,
+                    'from_email' => env('MAIL_FROM_ADDRESS'),
+                    'is_success' => true,
+                ];
+
+                $mail_input['payload'] = array(json_encode($mail_input));
+
+                Mail::create($mail_input);
+
                 $this->result['message'] = $find_application['message'];
                 $this->result['data'] = [];
 
@@ -32,6 +43,16 @@ class ApproveApplication extends BaseService implements BaseServiceInterface
                 ]);
 
                 SendMail::dispatch($find_application['data']->user->email, 'Application Notification', 'template.mail.application');
+
+                $mail_input = [
+                    'to_email' => $find_application['data']->user->email,
+                    'from_email' => env('MAIL_FROM_ADDRESS'),
+                    'is_success' => true,
+                ];
+
+                $mail_input['payload'] = array(json_encode($mail_input));
+
+                Mail::create($mail_input);
 
                 DB::commit();
 

@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Application Approval</h1>
+        <h1 class="mt-4">Leave Request</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item">Dashboard</li>
-            <li class="breadcrumb-item active">Application Approval</li>
+            <li class="breadcrumb-item active">Leave Request</li>
         </ol>
         <div class="row">
             <div class="col-12">
@@ -13,7 +13,7 @@
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div>
                             <i class="fas fa-table me-1"></i>
-                            Edit Application Approval
+                            Edit Leave Request
                         </div>
                         <a href="{{ route('dashboard.approval_application.index') }}" class="btn btn-sm btn-secondary">
                             <i class="fa fa-arrow-left"></i>
