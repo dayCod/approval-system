@@ -23,10 +23,6 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Leave Request
             </a>
-            <a class="nav-link" href="index.html">
-                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                Mail Notif History
-            </a>
             @endrole
             @role('user')
             <a class="nav-link" href="{{ route('dashboard.approval_application.index') }}">

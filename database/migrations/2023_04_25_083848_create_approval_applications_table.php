@@ -27,7 +27,7 @@ return new class extends Migration
             $table->string('evidence_img')->comment('Bukti Gambar Izin');
             $table->boolean('need_remark');
             $table->longText('remark')->nullable();
-            $table->integer('status')->default(0)->comment('0:process, 1:approved, 2:rejected');
+            $table->integer('status')->default(0)->comment('0:process, 1:approved, 2:rejected, 3:revise');
             $table->timestamps();
         });
     }
