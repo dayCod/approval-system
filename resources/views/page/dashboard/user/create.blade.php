@@ -46,7 +46,7 @@
                                 <label for="inputPassword">Password</label>
                             </div>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-primary">Create</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                         </form>
                     </div>

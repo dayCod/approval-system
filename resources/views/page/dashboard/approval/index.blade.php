@@ -15,10 +15,6 @@
                             <i class="fas fa-table me-1"></i>
                             Leave Request Data
                         </div>
-                        <a href="{{ route('dashboard.approval_application.create') }}" class="btn btn-sm btn-secondary">
-                            <i class="fa fa-plus-circle"></i>
-                            Create
-                        </a>
                     </div>
                     <div class="card-body">
                         <table id="datatablesSimple">
@@ -81,10 +77,12 @@
                                         <a href="{{ route('dashboard.approval.approve', $approval_application->id) }}"
                                             class="btn btn-sm btn-success approval-btn" id="approve">
                                             <i class="fa fa-check"></i>
+                                            Approve
                                         </a>
                                         <a href="{{ route('dashboard.approval.reject', $approval_application->id) }}"
                                             class="btn btn-sm btn-danger approval-btn" id="reject">
                                             <i class="fa fa-close"></i>
+                                            Reject
                                         </a>
                                         @else
                                         <span class="badge {{ ($approval_application->status == 1) ? 'bg-success' : 'bg-danger' }}">{{ ($approval_application->status == 1) ? 'Approved' : 'Rejected' }}</span>

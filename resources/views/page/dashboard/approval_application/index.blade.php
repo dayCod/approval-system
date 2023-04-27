@@ -99,14 +99,18 @@
                                             {{ Carbon\Carbon::parse($approval_application->created_at)->format('d M Y') }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}"
-                                                class="btn btn-sm btn-success">
-                                                <i class="fa fa-edit"></i>
-                                            </a>
-                                            <a href="{{ route('dashboard.approval_application.destroy', $approval_application->id) }}"
-                                                class="btn btn-sm btn-danger btn-delete">
-                                                <i class="fa fa-trash"></i>
-                                            </a>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}"
+                                                    class="btn btn-sm btn-success">
+                                                    <i class="fa fa-edit"></i>
+                                                    Edit
+                                                </a>
+                                                <a href="{{ route('dashboard.approval_application.destroy', $approval_application->id) }}"
+                                                    class="btn btn-sm btn-danger btn-delete">
+                                                    <i class="fa fa-trash"></i>
+                                                    Delete
+                                                </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach

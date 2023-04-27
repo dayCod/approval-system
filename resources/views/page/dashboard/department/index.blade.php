@@ -42,9 +42,11 @@
                                     <td>
                                         <a href="{{ route('dashboard.department.edit', $department->id) }}" class="btn btn-sm btn-success">
                                             <i class="fa fa-edit"></i>
+                                            Edit
                                         </a>
                                         <a href="{{ route('dashboard.department.destroy', $department->id) }}" class="btn btn-sm btn-danger btn-delete">
                                             <i class="fa fa-trash"></i>
+                                            Delete
                                         </a>
                                     </td>
                                 </tr>
