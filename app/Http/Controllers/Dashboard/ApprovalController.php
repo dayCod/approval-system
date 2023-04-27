@@ -41,7 +41,14 @@ class ApprovalController extends Controller
             'application_id' => $id,
         ]);
 
-        if (!$result['success']) return response()->json(['error' => $result['message']], 404);
+        if (!$result['success']) {
+
+            session()->flash('fail', $result['message']);
+
+            return response()->json(['error' => $result['message']], 404);
+        }
+
+        session()->flash('success', $result['message']);
 
         return response()->json(['success' => $result['message']], 200);
     }
