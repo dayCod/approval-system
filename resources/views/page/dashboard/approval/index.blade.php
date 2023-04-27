@@ -79,11 +79,11 @@
                                     <td>
                                         @if($approval_application->status == 0)
                                         <a href="{{ route('dashboard.approval.approve', $approval_application->id) }}"
-                                            class="btn btn-sm btn-success">
+                                            class="btn btn-sm btn-success approval-btn" id="approve">
                                             <i class="fa fa-check"></i>
                                         </a>
                                         <a href="{{ route('dashboard.approval.reject', $approval_application->id) }}"
-                                            class="btn btn-sm btn-danger">
+                                            class="btn btn-sm btn-danger approval-btn" id="reject">
                                             <i class="fa fa-close"></i>
                                         </a>
                                         @else

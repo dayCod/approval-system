@@ -23,9 +23,16 @@ class ApprovalController extends Controller
             'application_id' => $id,
         ]);
 
-        if (!$result['success']) return back()->with('fail', $result['message']);
+        if (!$result['success']) {
 
-        return redirect()->route('dashboard.approval.index')->with('success', $result['message']);
+            session()->flash('fail', $result['message']);
+
+            return response()->json(['error' => $result['message']], 404);
+        }
+
+        session()->flash('success', $result['message']);
+
+        return response()->json(['success' => $result['message']], 200);
     }
 
     public function rejectApplication($id)
@@ -34,8 +41,8 @@ class ApprovalController extends Controller
             'application_id' => $id,
         ]);
 
-        if (!$result['success']) return back()->with('fail', $result['message']);
+        if (!$result['success']) return response()->json(['error' => $result['message']], 404);
 
-        return redirect()->route('dashboard.approval.index')->with('success', $result['message']);
+        return response()->json(['success' => $result['message']], 200);
     }
 }

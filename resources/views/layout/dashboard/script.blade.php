@@ -80,3 +80,93 @@
         })
     })
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('.approval-btn').click(function(e) {
+
+            e.preventDefault()
+
+            let href = $(this).attr('href')
+
+            if ($(this).attr('id') == "approve") {
+                swal({
+                    title: "Warning",
+                    text: "This Data Will be Aprroved",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((result) => {
+                    if (result) {
+                        $.ajax({
+                            url: href,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content')
+                            },
+                            success: function(res) {
+                                swal({
+                                    title: 'Success',
+                                    text: 'Data Successfully Approved',
+                                    icon: "success",
+                                    button: "Close"
+                                }).then(() => {
+                                    location.reload()
+                                })
+                            },
+                            error: function(res) {
+                                swal({
+                                    title: "Oops..!",
+                                    text: "Something went Wrong",
+                                    icon: "error",
+                                    button: "Close",
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            }
+                        })
+                    }
+                })
+                console.log(href)
+            } else {
+                swal({
+                    title: "Warning",
+                    text: "This Data Will be Rejected",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                }).then((result) => {
+                    if (result) {
+                        $.ajax({
+                            url: href,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr(
+                                    'content')
+                            },
+                            success: function(res) {
+                                swal({
+                                    title: 'Success',
+                                    text: 'Data Successfully Rejected',
+                                    icon: "success",
+                                    button: "Close"
+                                }).then(() => {
+                                    location.reload()
+                                })
+                            },
+                            error: function(res) {
+                                swal({
+                                    title: "Oops..!",
+                                    text: "Something went Wrong",
+                                    icon: "error",
+                                    button: "Close",
+                                }).then(() => {
+                                    location.reload();
+                                });
+                            }
+                        })
+                    }
+                })
+            }
+        })
+    })
+</script>
