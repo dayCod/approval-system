@@ -40,6 +40,7 @@ class RejectApplication extends BaseService implements BaseServiceInterface
 
                 $find_application['data']->update([
                     'status' => 2, // rejected
+                    'revise_notes' => null,
                 ]);
 
                 SendMail::dispatch($find_application['data']->user->email, 'Application Notification', 'template.mail.application');

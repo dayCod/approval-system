@@ -25,11 +25,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Consent</th>
+                                    <th>Leave Type</th>
                                     <th>Departement</th>
                                     <th>Image</th>
                                     <th>Remark</th>
                                     <th>Status</th>
+                                    <th>Revise Notes</th>
                                     <th>Created at</th>
                                     <th>Action</th>
                                 </tr>
@@ -101,15 +102,20 @@
                                             </span>
                                         </td>
                                         <td>
+                                            {{ $approval_application->revise_notes ?? '-' }}
+                                        </td>
+                                        <td>
                                             {{ Carbon\Carbon::parse($approval_application->created_at)->format('d M Y') }}
                                         </td>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
+                                                @if ($approval_application->status == 0 || $approval_application->status == 3)
                                                 <a href="{{ route('dashboard.approval_application.edit', $approval_application->id) }}"
                                                     class="btn btn-sm btn-success">
                                                     <i class="fa fa-edit"></i>
                                                     Edit
                                                 </a>
+                                                @endif
                                                 <a href="{{ route('dashboard.approval_application.destroy', $approval_application->id) }}"
                                                     class="btn btn-sm btn-danger btn-delete">
                                                     <i class="fa fa-trash"></i>

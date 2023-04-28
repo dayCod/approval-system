@@ -21,6 +21,7 @@ class UpdateApplication extends BaseService implements BaseServiceInterface
             'department_id' => $dto['department_id'],
             'need_remark' => $dto['need_remark'],
             'remark' => $dto['remark'] ?? null,
+            'status' => 0, // process
         ];
 
         $find_application = ApprovalApplication::where('id', $dto['application_id'])->first();

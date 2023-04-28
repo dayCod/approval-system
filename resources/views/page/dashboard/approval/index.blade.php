@@ -21,11 +21,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Consent</th>
+                                    <th>Leave Type</th>
                                     <th>Departement</th>
                                     <th>Image</th>
                                     <th>Remark</th>
-                                    <th>Created at</th>
+                                    <th>Last Updated at</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
