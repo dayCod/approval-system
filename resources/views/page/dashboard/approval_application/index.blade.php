@@ -83,15 +83,20 @@
                                                 bg-warning
                                             @elseif($approval_application->status == 1)
                                                 bg-success
+                                            @elseif ($approval_application->status == 2)
+                                                bg-danger
                                             @else
-                                                bg-danger @endif
+                                                bg-secondary
+                                            @endif
                                         ">
                                                 @if ($approval_application->status == 0)
                                                     Process
                                                 @elseif($approval_application->status == 1)
                                                     Approve
-                                                @else
+                                                @elseif ($approval_application->status == 2)
                                                     Reject
+                                                @else
+                                                    Revised
                                                 @endif
                                             </span>
                                         </td>

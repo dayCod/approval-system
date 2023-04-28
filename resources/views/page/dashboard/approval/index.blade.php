@@ -101,8 +101,9 @@
                                                             aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="" method="POST">
+                                                        <form action="{{ route('dashboard.approval.revise', $approval_application->id) }}" method="POST">
                                                             @csrf
+                                                            @method('PUT')
                                                             <div class="mb-3">
                                                                 <label for="exampleFormControlTextarea1" class="form-label">Notes</label>
                                                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="notes"></textarea>

@@ -11,6 +11,7 @@ use App\Services\Dashboard\ApplicationApproval\GetApplication;
 use App\Services\Dashboard\ApplicationApproval\UpdateApplication;
 use App\Services\Dashboard\Approval\ApproveApplication;
 use App\Services\Dashboard\Approval\RejectApplication;
+use App\Services\Dashboard\Approval\ReviseApplication;
 use App\Services\Dashboard\Consent\CreateConsent;
 use App\Services\Dashboard\Consent\DeleteConsent;
 use App\Services\Dashboard\Consent\GetConsent;
@@ -70,6 +71,7 @@ class AppServiceProvider extends ServiceProvider
         // Approval
         $this->registerService('approveApplication', ApproveApplication::class);
         $this->registerService('rejectApplication', RejectApplication::class);
+        $this->registerService('reviseApplication', ReviseApplication::class);
 
     }
 
