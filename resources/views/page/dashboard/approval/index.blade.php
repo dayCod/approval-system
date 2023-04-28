@@ -25,6 +25,7 @@
                                     <th>Departement</th>
                                     <th>Image</th>
                                     <th>Remark</th>
+                                    <th>Revise Notes</th>
                                     <th>Last Updated at</th>
                                     <th>Action</th>
                                 </tr>
@@ -68,6 +69,9 @@
                                     </td>
                                     <td>
                                         {{ $approval_application->need_remark ? $approval_application->remark : '-' }}
+                                    </td>
+                                    <td>
+                                        {{ $approval_application->revise_notes ?? '-' }}
                                     </td>
                                     <td>
                                         {{ Carbon\Carbon::parse($approval_application->created_at)->format('d M Y') }}
