@@ -59,6 +59,7 @@ Route::group(['prefix' => '/', 'middleware' => ['auth']], function () {
         Route::get('/approval', 'index')->name('dashboard.approval.index');
         Route::get('/approval/{id}/approve', 'approveApplication')->name('dashboard.approval.approve');
         Route::get('/approval/{id}/reject', 'rejectApplication')->name('dashboard.approval.reject');
+        Route::put('/approval/{id}/revise', 'reviseApplication')->name('dashboard.approval.revise');
     });
 
 });

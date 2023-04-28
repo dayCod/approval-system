@@ -43,7 +43,20 @@ class SendMail implements ShouldQueue
         $application = ApprovalApplication::where('user_id', $user['id'])->first();
 
         $data['name'] = $user['name'];
-        $data['status'] = ($application['status'] == 1) ? 'Approve' : 'Reject';
+
+        switch ($application['status']) {
+            case 1:
+                $data['status'] = 'Approve';
+                break;
+            case 2:
+                $data['status'] = 'Reject';
+                break;
+            case 3:
+                $data['status'] = 'Revise';
+                break;
+            default:
+                $data['status'] = 'Process';
+        }
 
         Email::send($this->to, $this->title, $this->view, $data);
     }

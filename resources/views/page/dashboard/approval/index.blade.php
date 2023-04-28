@@ -21,11 +21,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Consent</th>
+                                    <th>Leave Type</th>
                                     <th>Departement</th>
                                     <th>Image</th>
                                     <th>Remark</th>
-                                    <th>Created at</th>
+                                    <th>Last Updated at</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -73,7 +73,7 @@
                                         {{ Carbon\Carbon::parse($approval_application->created_at)->format('d M Y') }}
                                     </td>
                                     <td>
-                                        @if($approval_application->status == 0)
+                                        @if ($approval_application->status == 0)
                                         <a href="{{ route('dashboard.approval.approve', $approval_application->id) }}"
                                             class="btn btn-sm btn-success approval-btn" id="approve">
                                             <i class="fa fa-check"></i>
@@ -84,8 +84,44 @@
                                             <i class="fa fa-close"></i>
                                             Reject
                                         </a>
+                                        {{-- Revise --}}
+                                        <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#revise{{ $index + 1 }}">
+                                            <i class="fa fa-edit"></i>
+                                            Revise
+                                        </button>
+
+                                        <div class="modal fade" id="revise{{ $index + 1 }}" tabindex="-1"
+                                            aria-labelledby="reviseLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="reviseLabel">Revise Notes</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="{{ route('dashboard.approval.revise', $approval_application->id) }}" method="POST">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <div class="mb-3">
+                                                                <label for="exampleFormControlTextarea1" class="form-label">Notes</label>
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="notes"></textarea>
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary">Submit</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- End Revise --}}
+                                        @elseif ($approval_application->status == 1)
+                                        <span class="badge bg-success">Approve</span>
+                                        @elseif ($approval_application->status == 2)
+                                        <span class="badge bg-danger">Reject</span>
                                         @else
-                                        <span class="badge {{ ($approval_application->status == 1) ? 'bg-success' : 'bg-danger' }}">{{ ($approval_application->status == 1) ? 'Approved' : 'Rejected' }}</span>
+                                        <span class="badge bg-secondary">Revise</span>
                                         @endif
                                     </td>
                                 </tr>

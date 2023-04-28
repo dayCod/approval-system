@@ -22,5 +22,6 @@ class ConsentSeeder extends Seeder
         , ['name' => 'Izin Bencana Alam', 'created_at' => now()]];
 
         Consent::insert($data);
+
     }
 }

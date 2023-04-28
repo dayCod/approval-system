@@ -52,4 +52,16 @@ class ApprovalController extends Controller
 
         return response()->json(['success' => $result['message']], 200);
     }
+
+    public function reviseApplication(Request $request, $id)
+    {
+        $result = app('reviseApplication')->execute([
+            'application_id' => $id,
+            'revise_notes' => $request['notes'],
+        ]);
+
+        if (!$result['success']) return back()->with('fail', $result['message']);
+
+        return redirect()->route('dashboard.approval.index')->with('success', $result['message']);
+    }
 }

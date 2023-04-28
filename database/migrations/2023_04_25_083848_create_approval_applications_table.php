@@ -28,6 +28,7 @@ return new class extends Migration
             $table->boolean('need_remark');
             $table->longText('remark')->nullable();
             $table->integer('status')->default(0)->comment('0:process, 1:approved, 2:rejected, 3:revise');
+            $table->string('revise_notes')->nullable()->comment('Kalo Ada Revisi Kolom Ini Menjadi Notes Dari Admin');
             $table->timestamps();
         });
     }

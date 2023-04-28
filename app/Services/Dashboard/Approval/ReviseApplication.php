@@ -8,7 +8,7 @@ use App\Services\BaseService;
 use Illuminate\Support\Facades\DB;
 use App\Services\BaseServiceInterface;
 
-class RejectApplication extends BaseService implements BaseServiceInterface
+class ReviseApplication extends BaseService implements BaseServiceInterface
 {
     public function process($dto)
     {
@@ -39,8 +39,8 @@ class RejectApplication extends BaseService implements BaseServiceInterface
             } else {
 
                 $find_application['data']->update([
-                    'status' => 2, // rejected
-                    'revise_notes' => null,
+                    'status' => 3, // revised
+                    'revise_notes' => $dto['revise_notes'],
                 ]);
 
                 SendMail::dispatch($find_application['data']->user->email, 'Application Notification', 'template.mail.application');
@@ -58,7 +58,7 @@ class RejectApplication extends BaseService implements BaseServiceInterface
                 DB::commit();
 
                 $this->result['success'] = true;
-                $this->result['message'] = 'Application Approved!';
+                $this->result['message'] = 'Application Revised!';
                 $this->result['data'] = $find_application['data'];
 
             }
